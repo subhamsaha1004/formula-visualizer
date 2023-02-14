@@ -1,0 +1,9 @@
+<div class="app">
+  <h1>Welcome to the formulizer!</h1>
+  <h3>Input formula</h3>
+  <p>
+    <textarea cols="100" rows="2" [(ngModel)]="formula"></textarea><br>
+  </p>
+  <p><button (click)="updateAstView()">Parse and update AST View</button></p>
+  <formula-visualizer [ast]="syntaxTree"></formula-visualizer>
+</div>

@@ -1,0 +1,39 @@
+pre {
+  max-height: 100px;
+  overflow-y: auto;
+  background-color: #eeeeee;
+  padding: 8px;
+}
+
+.visualizer {
+  font-size: 12px;
+}
+
+.visualizer-output {
+  font-family: monospace;
+}
+
+.box {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.selectable {
+  border: 1px solid #999;
+}
+
+.filled {
+  background: skyblue;
+}
+
+.selected {
+  background: papayawhip;
+}
+
+.deletion-note {
+  font-size: 12px;
+}

@@ -1,0 +1,31 @@
+<h3>Visualizer</h3>
+<pre>{{astJson}}</pre>
+<div class="visualizer" #visualizer (click)="selectNode($event)">
+    <ng-container
+      *ngTemplateOutlet="partsTmpl; context:{ parts: formulaParts }">
+    </ng-container>
+</div>
+<p class="deletion-note"><em>(Click on nodes to select)</em></p>
+<p class="delete-btn"><button (click)="deleteNode()">Delete Selected</button></p>
+<h3>Visualizer-to-Formula</h3>
+<p class="visualizer-output">{{visualizerOutput}}</p>
+  
+<ng-template #partsTmpl let-parts="parts">
+  <div class="box"
+       [class.selectable]="isSelectable(part)"
+       [class.filled]="part.type === 'FUNCTION' || part.type === 'CONSTANT'"
+       *ngFor="let part of parts">
+    <div *ngIf="!isArray(part) && part.type === undefined">{{part}}</div>
+    <div *ngIf="!isArray(part) && part.type !== undefined"
+         [class.operator]="part.type === 'OPERATOR'"
+         [class.func]="part.type === 'FUNCTION'"
+         data-id="{{part.id !== undefined ? part.id : ''}}">
+      {{part.value}}
+    </div>
+    <div *ngIf="isArray(part)">
+      <ng-container
+        *ngTemplateOutlet="partsTmpl; context:{ parts: part }">
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
